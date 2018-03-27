@@ -13,33 +13,37 @@ class FrontPageList extends Component {
   }
 
   renderStoriesList() {
-    return this.props.stories.map(story => {
-      return (
-        <List.Item key={story.id}>
-          <List.Icon
-            name="star"
-            size="large"
-            verticalAlign="middle"
-            color="yellow"
-          />
-          <List.Content>
-            <List.Header as="a" href={story.url}>
-              {story.title}
-            </List.Header>
-            <List.Description>
-              {story.score} points by {story.by}{' '}
-              <Link to={'/post/' + story.id}>
-                {moment(story.time * 1000).fromNow()}
-              </Link>{' '}
-              with {story.descendants}{' '}
-              <Link to={'/post/' + story.id}>comments</Link> ({getWebsite(
-                story.url
-              )})
-            </List.Description>
-          </List.Content>
-        </List.Item>
-      );
-    });
+    return this.props.stories
+      .filter(story => {
+        return story !== null;
+      }) //filter stories so null stories dosen't get through
+      .map(story => {
+        return (
+          <List.Item key={story.id}>
+            <List.Icon
+              name="star"
+              size="large"
+              verticalAlign="middle"
+              color="yellow"
+            />
+            <List.Content>
+              <List.Header as="a" href={story.url}>
+                {story.title}
+              </List.Header>
+              <List.Description>
+                {story.score} points by {story.by}{' '}
+                <Link to={'/post/' + story.id}>
+                  {moment(story.time * 1000).fromNow()}
+                </Link>{' '}
+                with {story.descendants}{' '}
+                <Link to={'/post/' + story.id}>comments</Link> ({getWebsite(
+                  story.url
+                )})
+              </List.Description>
+            </List.Content>
+          </List.Item>
+        );
+      });
   }
 
   render() {

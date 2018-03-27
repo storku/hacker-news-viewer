@@ -16,12 +16,15 @@ export const getCommentsTree = postID => async dispatch => {
       commentsTree[kid] = {};
       const url = 'https://hacker-news.firebaseio.com/v0/item/' + kid + '.json';
       const comment = await axios(url);
-      const commentKids = comment.data.kids;
+      if (!comment.data) {
+        return;
+      }
       const commentParent = comment.data.parent;
       const commentID = comment.data.id;
       const commentText = comment.data.text;
       const commentBy = comment.data.by;
       const commentTime = comment.data.time;
+      const commentKids = comment.data.kids;
       commentsTree[kid] = {
         parent: commentParent,
         id: commentID,

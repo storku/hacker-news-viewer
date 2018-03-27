@@ -8,16 +8,33 @@ import { Message, Icon } from 'semantic-ui-react';
 
 class FrontPage extends Component {
   componentDidMount() {
-    this.props.getHackerNewsStories(this.props.match.params.pageID);
+    //look at the url path to determine which type of stories to load
+    let pageType = this.props.match.params.pageType;
+    if (!pageType) {
+      pageType = 'topstories';
+    } else {
+      if (pageType === 'top') {
+        pageType = 'topstories';
+      } else if (pageType === 'new') {
+        pageType = 'newstories';
+      } else if (pageType === 'best') {
+        pageType = 'beststories';
+      } else if (pageType === 'ask') {
+        pageType = 'askstories';
+      } else if (pageType === 'show') {
+        pageType = 'showstories';
+      } else if (pageType === 'job') {
+        pageType = 'jobstories';
+      }
+    }
+    this.props.getHackerNewsStories(this.props.match.params.pageID, pageType);
   }
 
   render() {
     return (
       <div>
         <Message>
-          <Message.Header>
-            Welcome to the front page of HackerNews-clone!
-          </Message.Header>
+          <Message.Header>Welcome to the Hacker News Viewer!</Message.Header>
           <Icon color="red" name="heart" /> Welcome everyone!
         </Message>
         <FrontPageList />

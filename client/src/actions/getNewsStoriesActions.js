@@ -2,10 +2,10 @@ import axios from 'axios'; //used to make AJAX requests
 import { GET_STORIES, GET_STORY, GET_PAGE_ID } from './types'; //import the action type FETCH_USER for fetchUser
 
 //get hacker news stories
-export const getHackerNewsStories = pageID => async dispatch => {
+export const getHackerNewsStories = (pageID, pageType) => async dispatch => {
   //get the top news stories IDs first
   const res = await axios.get(
-    'https://hacker-news.firebaseio.com/v0/topstories.json'
+    'https://hacker-news.firebaseio.com/v0/' + pageType + '.json'
   );
   //Based on the page number get the corresponding 30 stories
   //For example /new/2 gets 30 to 60 (story 31 to 60)
@@ -29,7 +29,6 @@ export const getHackerNewsStories = pageID => async dispatch => {
       return storyData;
     })
   );
-
   dispatch({ type: GET_PAGE_ID, payload: pageID });
   dispatch({ type: GET_STORIES, payload: stories });
 };

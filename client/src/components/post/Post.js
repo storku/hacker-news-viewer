@@ -33,9 +33,10 @@ class Post extends Component {
           <Message.Header as="a" href={url}>
             {title}
           </Message.Header>
-          {score} points by {by} {moment(time * 1000).fromNow()} | hide | past |
-          web | favorite | {this.props.commentsNumber} comments |{' '}
-          {getWebsite(url)} | id: {id}
+          {score} points by {by} {moment(time * 1000).fromNow()} | hide | past |{' '}
+          <a href={'https://www.google.com/search?q=' + title}>web</a> |
+          favorite | {this.props.commentsNumber} comments | {getWebsite(url)} |
+          id: {id}
         </Message>
       </div>
     );

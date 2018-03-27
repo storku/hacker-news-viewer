@@ -13,17 +13,17 @@ class FrontPageBottom extends Component {
     if (pageID > 1) {
       return (
         <div>
-          <Button secondary as="a" href={'/news/' + backwardPageID}>
+          <Button secondary as="a" href={'/top/' + backwardPageID}>
             Back
           </Button>
-          <Button primary as="a" href={'/news/' + forwardPageID}>
+          <Button primary as="a" href={'/top/' + forwardPageID}>
             More
           </Button>
         </div>
       );
     } else {
       return (
-        <Button primary as="a" href={'/news/' + forwardPageID}>
+        <Button primary as="a" href={'/top/' + forwardPageID}>
           More
         </Button>
       );

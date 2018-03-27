@@ -1,0 +1,8 @@
+/client/src/components/frontpage/FrontPageBottom.js
+  In renderButton(), change the <a> in <Button> to <Link> from React Router Dom
+    Get the <Link> tag to reload the page.
+      *Same thing occurs in MenuLoggedIn.js and MenuLoggedOut.js
+
+/client/src/actions/getAllCommentsActions.js
+
+Make deleted comments to not display

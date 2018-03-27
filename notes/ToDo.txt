@@ -4,5 +4,10 @@
       *Same thing occurs in MenuLoggedIn.js and MenuLoggedOut.js
 
 /client/src/actions/getAllCommentsActions.js
+  Allow all post comments to load async
+    Currently after a few hundred comments or during slow connection,
+    some comments might not load.
 
 Make deleted comments to not display
+
+List the ranking for each post on the front page

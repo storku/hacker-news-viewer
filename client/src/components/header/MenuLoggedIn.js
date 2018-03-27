@@ -12,22 +12,22 @@ class MenuLoggedIn extends Component {
     return (
       <Menu>
         <Menu.Item>
-          <a href="/top/1">Top</a>
+          <a href="/front/top/1">Top</a>
         </Menu.Item>
         <Menu.Item>
-          <a href="/new/1">New</a>
+          <a href="/front/new/1">New</a>
         </Menu.Item>
         <Menu.Item>
-          <a href="/best/1">Best</a>
+          <a href="/front/best/1">Best</a>
         </Menu.Item>
         <Menu.Item>
-          <a href="/ask/1">Ask</a>
+          <a href="/front/ask/1">Ask</a>
         </Menu.Item>
         <Menu.Item>
-          <a href="/show/1">Show</a>
+          <a href="/front/show/1">Show</a>
         </Menu.Item>
         <Menu.Item>
-          <a href="/job/1">Jobs</a>
+          <a href="/front/job/1">Jobs</a>
         </Menu.Item>
         <Menu.Item>Search</Menu.Item>
         <Menu.Item>Write</Menu.Item>

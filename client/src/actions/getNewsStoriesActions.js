@@ -1,11 +1,31 @@
 import axios from 'axios'; //used to make AJAX requests
-import { GET_STORIES, GET_STORY, GET_PAGE_ID } from './types'; //import the action type FETCH_USER for fetchUser
+import { GET_STORIES, GET_STORY, GET_PAGE_ID, GET_PAGE_TYPE } from './types'; //import the action type FETCH_USER for fetchUser
 
 //get hacker news stories
 export const getHackerNewsStories = (pageID, pageType) => async dispatch => {
+  //determine the uri based on pageType
+  let pageTypeURI;
+  if (!pageType) {
+    pageType = 'top';
+    pageTypeURI = 'topstories';
+  } else {
+    if (pageType === 'top') {
+      pageTypeURI = 'topstories';
+    } else if (pageType === 'new') {
+      pageTypeURI = 'newstories';
+    } else if (pageType === 'best') {
+      pageTypeURI = 'beststories';
+    } else if (pageType === 'ask') {
+      pageTypeURI = 'askstories';
+    } else if (pageType === 'show') {
+      pageTypeURI = 'showstories';
+    } else if (pageType === 'job') {
+      pageTypeURI = 'jobstories';
+    }
+  }
   //get the top news stories IDs first
   const res = await axios.get(
-    'https://hacker-news.firebaseio.com/v0/' + pageType + '.json'
+    'https://hacker-news.firebaseio.com/v0/' + pageTypeURI + '.json'
   );
   //Based on the page number get the corresponding 30 stories
   //For example /new/2 gets 30 to 60 (story 31 to 60)
@@ -29,6 +49,7 @@ export const getHackerNewsStories = (pageID, pageType) => async dispatch => {
       return storyData;
     })
   );
+  dispatch({ type: GET_PAGE_TYPE, payload: pageType });
   dispatch({ type: GET_PAGE_ID, payload: pageID });
   dispatch({ type: GET_STORIES, payload: stories });
 };

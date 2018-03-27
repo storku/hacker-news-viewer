@@ -6,6 +6,7 @@ import commentsReducer from './commentsReducer';
 import commentsTreeReducer from './commentsTreeReducer';
 import commentsNumberReducer from './commentsNumberReducer';
 import pageIDReducer from './pageIDReducer';
+import pageTypeReducer from './pageTypeReducer';
 
 //combine all the reducers here
 export default combineReducers({
@@ -15,5 +16,6 @@ export default combineReducers({
   comments: commentsReducer,
   commentsTree: commentsTreeReducer,
   commentsNumber: commentsNumberReducer,
-  pageID: pageIDReducer
+  pageID: pageIDReducer,
+  pageType: pageTypeReducer
 });

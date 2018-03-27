@@ -33,7 +33,7 @@ class App extends Component {
             <Header />
             <Route exact path="/" component={FrontPage} />
             <Route exact path="/top" component={FrontPage} />
-            <Route path="/:pageType/:pageID" component={FrontPage} />
+            <Route path="/front/:pageType/:pageID" component={FrontPage} />
             <Route path="/post/:postID" component={Post} />
             <Route exact path="/surveys" component={Dashboard} />
             <Route exact path="/surveys/new" component={SurveyNew} />
